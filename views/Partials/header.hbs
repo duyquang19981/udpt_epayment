@@ -1,0 +1,174 @@
+<link href="_styles/home.css" rel="stylesheet" type="text/css" />
+<header class="header">
+
+	<!-- Top Bar -->
+	<div class="top_bar">
+		<div class="top_bar_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+							<ul class="top_bar_contact_list">
+								<li>
+									<i class="fa fa-envelope-o" aria-hidden="true"></i>
+									<div>EC20A10@gmail.com</div>
+								</li>
+							</ul>
+							<div class="top_bar_login ml-auto">
+								<div class="login_button sign up" 
+								{{!-- data-toggle="modal" data-target="#myModal3" --}}
+								><a
+										href="/signup">Register</a></div>
+								<div class="login_button sign in" 
+								{{!-- data-toggle="modal" data-target="#myModal2" --}}
+								><a href="/Login/">
+										Login</a></div>
+										
+								<div class="login_button sign-out" style="display: none;" {{!--onclick="logOut()"--}}
+								><a href="/logout">
+										Logout</a></div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Header Content -->
+	<div class="header_container">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="header_content d-flex flex-row align-items-center justify-content-start">
+						<div class="logo_container">
+							<a href="/">
+								<div class="logo_text">E<span>LEARNING</span></div>
+							</a>
+						</div>
+						<nav class="main_nav_contaner ml-auto">
+							<ul class="main_nav">
+								<li class=""><a href="/">Home</a></li>
+								<li><a href= "/category">Category</a></li> 
+								<li><a href="/courses">Courses</a></li>
+							</ul>
+							<div class="search_button"><i class="fa fa-search" aria-hidden="true"></i></div>
+
+							<a href="/userprofile">
+							<div class="shopping_cart avt_button"><i class="fa fa-user" aria-hidden="true"></i></div></a>
+							<!-- Hamburger -->
+							<a href="/userprofile/cart">
+							<div class="shopping_cart" >
+								
+								<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+								
+							</div>
+							</a>
+							<div class="hamburger menu_mm">
+								<i class="fa fa-bars menu_mm" aria-hidden="true"></i>
+							</div>
+						</nav>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Header Search Panel -->
+	<div class="header_search_container">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="header_search_content d-flex flex-row align-items-center justify-content-end">
+						<form action="/search" method="get" class="header_search_form">
+							<input type="search" name="q" class="search_input" placeholder="Search" required="required">
+							<button
+								class="header_search_button d-flex flex-column align-items-center justify-content-center">
+								<i class="fa fa-search" aria-hidden="true"></i>
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</header>
+
+<!-- Menu -->
+
+<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
+	<div class="menu_close_container">
+		<div class="menu_close">
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<div class="search">
+		<form action="#" class="header_search_form menu_mm">
+			<input type="search" class="search_input menu_mm" placeholder="Search" required="required">
+			<button class="header_search_button d-flex flex-column align-items-center justify-content-center menu_mm">
+				<i class="fa fa-search menu_mm" aria-hidden="true"></i>
+			</button>
+		</form>
+	</div>
+	
+</div>
+
+<!-- Modal1 -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+				<div class="signin-form profile">
+					<h3 class="agileinfo_sign">Sign In</h3>
+					<div class="login-form">
+						<input type="text" name="email" placeholder="E-mail" value="1712879@gmail.com" required="">
+						<input type="password" name="password" placeholder="Password" value="1234" required="">
+						<div class="tp">
+							<input type="submit" value="Sign In" onclick=login_func()>
+						</div>
+					</div>
+					<div class="login-social-grids">
+						<ul>
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-google"></i></a></li>
+
+						</ul>
+					</div>
+					<p><a href="#" data-toggle="modal" data-target="#myModal3"> Don't have an account?</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //Modal1 -->
+<!-- Modal2 -->
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+
+				<div class="signin-form profile">
+					<h3 class="agileinfo_sign">Sign Up</h3>
+					<div class="login-form">
+						<input type="text" name="name" placeholder="Username" required="">
+						<input type="email" name="email" placeholder="Email" required="">
+						<input type="password" name="password" placeholder="Password" required="">
+						<input type="submit" value="Sign Up" onclick=signup_func()>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{{!-- <script src="scripts/bootstrap.js"></script> --}}
+<script src="scripts/custom.js"></script>

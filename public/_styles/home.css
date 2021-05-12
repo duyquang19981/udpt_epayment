@@ -1,0 +1,129 @@
+button.close {
+    font-size: 1em;
+    color: #014727;
+    outline: none;
+}
+
+.modal-content{
+    padding: 0px 20px;
+}
+
+.modal-header{
+    display: block;
+}
+
+.modal-header .close {
+    padding: 15px 0;
+    margin: -15px -15px -15px auto;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.login-social-grids ul li {
+    display: inline-block;
+    margin: 0 .5em 0 0;
+}
+
+.login-social-grids ul li a {
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.login-social-grids ul li a i.fa.fa-facebook, .login-social-grids ul li a i.fa.fa-google{
+    height: 30px;
+    width: 30px;
+    border: solid 2px #212121;
+    line-height: 29px;
+    background: none;
+    color: #212121;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+
+.login-social-grids ul li a i.fa.fa-facebook:hover {
+    border: solid 2px #3b5998;
+    background: #3b5998;
+    color: #FFFFFF;
+}
+
+.login-social-grids ul li a i.fa.fa-google:hover {
+    border: solid 2px #e67e22;
+    background: #e67e22;
+    color: #FFFFFF;
+}
+
+.signin-form input[type="email"], .signin-form input[type="text"], .signin-form input[type="password"] {
+    width: 100%;
+    padding: 1em 1em 1em 1em;
+    font-size: 0.8em;
+    margin: 0.5em 0;
+    outline: none;
+    color: #212121;
+    border: none;
+    border: 1px solid #ccc;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.signin-form input[type="submit"] {
+    outline: none;
+    padding: 0.8em 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1em;
+    margin-top: 1em;
+    border: none;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: #33cc99;
+    box-shadow: 0px 2px 1px rgba(28, 28, 29, 0.42);
+}
+.login-form {
+    margin: 1em 0 2.5em;
+}
+
+h3.agileinfo_sign {
+    text-align: center;
+}
+
+.signin-content{
+    margin-top: 200px;
+    display: flex;
+}
+
+.signin-image{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.signin-form{
+    width: 40%;
+}
+
+.signup-content{
+    /* height: 400px; */
+    display: flex;
+    margin-top: 150px;
+    margin-bottom: 100px;
+}
+.signup-form{
+    order: 1;
+    width: 40%;
+    margin: 0 auto;
+}
+.form-group{
+    margin: 0;
+}
+
+/*  */
+.topic-check{
+    margin-left: 25px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    
+}

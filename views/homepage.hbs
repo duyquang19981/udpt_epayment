@@ -1,0 +1,318 @@
+{{#if isAuthentication}}
+<script>
+    window.onload = login_func;
+</script>
+{{/if}}
+
+{{>banner}}
+<!-- Features -->
+<div class="features">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title_container text-center">
+                    <h2 class="section_title">Welcome To 20A10 E-Learning</h2>
+                    <div class="section_subtitle">
+                        <p>Study any topic, anytime. Choose from thousands of expert-led courses now.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row features_row">
+
+            <!-- Features Item -->
+            <div class="col-lg-3 feature_col">
+                <div class="feature text-center trans_400">
+                    <div class="feature_icon"><img src="images/icon_1.png" alt=""></div>
+                    <h3 class="feature_title">The Experts</h3>
+                    
+                </div>
+            </div>
+
+            <!-- Features Item -->
+            <div class="col-lg-3 feature_col">
+                <div class="feature text-center trans_400">
+                    <div class="feature_icon"><img src="images/icon_2.png" alt=""></div>
+                    <h3 class="feature_title">Book & Library</h3>
+                    
+                </div>
+            </div>
+
+            <!-- Features Item -->
+            <div class="col-lg-3 feature_col">
+                <div class="feature text-center trans_400">
+                    <div class="feature_icon"><img src="images/icon_3.png" alt=""></div>
+                    <h3 class="feature_title">Best Courses</h3>
+                    
+                </div>
+            </div>
+
+            <!-- Features Item -->
+            <div class="col-lg-3 feature_col">
+                <div class="feature text-center trans_400">
+                    <div class="feature_icon"><img src="images/icon_4.png" alt=""></div>
+                    <h3 class="feature_title">Award & Reward</h3>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Popular Courses -->
+<div class="courses">
+    <div class="section_background parallax-window" data-parallax="scroll"
+        data-image-src="images/courses_background.jpg" data-speed="0.8"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title_container text-center">
+                    <h2 class="section_title">Cheapest Online Courses</h2>
+                    <div class="section_subtitle">
+                        {{!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel gravida arcu. Vestibulum
+                            feugiat, sapien ultrices fermentum congue, quam velit venenatis sem</p> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row courses_row">
+
+            <!-- Course -->
+            {{#each cheapest}}
+            <div class="col-lg-4 course_col mb-3">
+                <div class="course">
+                    <div class="course_image"><img src={{this.HinhAnh}} alt=""></div>
+                    <div class="course_body">
+                        <h3 class="course_title"><a href="/course/{{this._id}}">{{this.TenKhoaHoc}}</a></h3>
+                        <div class="course_teacher">{{this.GiaoVien.TenGiaoVien}}</div>
+                        <div class="course_teacher">{{this.NgayDang}}</div>
+                        <div class="course_text">
+                            <p>{{this.MoTa}}</p>
+                        </div>
+                    </div>
+                    <div class="course_footer">
+                        <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
+                            <div class="course_info">
+                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                <span>{{this.totalStudent}} Student</span>
+                            </div>
+                            <div class="course_info">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <span>{{this.Rating}} Ratings</span>
+                            </div>
+                            <div class="course_price ml-auto">VNĐ {{this.Gia}}K</div>
+                        </div>
+                        <button type="button" onclick="addToCart('{{this._id}}')" class="btn btn-primary mb-3 "><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+
+
+
+        </div>
+        {{!-- <div class="row">
+            <div class="col">
+                <div class="courses_button trans_200"><a href="#">view all courses</a></div>
+            </div>
+        </div> --}}
+    </div>
+</div>
+
+<!-- Trending Courses -->
+<div class="courses">
+    <div class="section_background parallax-window" data-parallax="scroll"
+        data-image-src="images/courses_background.jpg" data-speed="0.8"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title_container text-center">
+                    <h2 class="section_title">Newest Online Courses</h2>
+                    <div class="section_subtitle">
+                        {{!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel gravida arcu. Vestibulum
+                            feugiat, sapien ultrices fermentum congue, quam velit venenatis sem</p> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row courses_row">
+
+            <!-- Course -->
+            {{#each newest}}
+            <div class="col-lg-4 course_col mb-3">
+
+                <div class="course">
+                    <div class="course_image"><img src={{this.HinhAnh}} alt=""></div>
+                    <div class="course_body">
+                        <h3 class="course_title"><a href='/course/{{this._id}}'>{{this.TenKhoaHoc}}</a></h3>
+                        <div class="course_teacher">{{this.GiaoVien.TenGiaoVien}}</div>
+                        <div class="course_teacher">{{this.NgayDang}}</div>
+                        <div class="course_text">
+                            <p>{{this.MoTa}}</p>
+                        </div>
+                    </div>
+                    <div class="course_footer">
+                        <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
+                            <div class="course_info">
+                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                <span>{{this.totalStudent}} Student</span>
+                            </div>
+                            <div class="course_info">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <span>{{this.Rating}} Ratings</span>
+                            </div>
+                            <div class="course_price ml-auto">VNĐ {{this.Gia}}K</div>
+                        </div>
+                        <button type="button" onclick="addToCart('{{this._id}}')" class="btn btn-primary mb-3 "><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+
+
+
+        </div>
+        {{!-- <div class="row">
+            <div class="col">
+                <div class="courses_button trans_200"><a href="#">view all courses</a></div>
+            </div>
+        </div> --}}
+    </div>
+</div>
+
+<!-- Best Courses -->
+<div class="courses">
+    <div class="section_background parallax-window" data-parallax="scroll"
+        data-image-src="images/courses_background.jpg" data-speed="0.8"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title_container text-center">
+                    <h2 class="section_title">Best Online Courses</h2>
+                    <div class="section_subtitle">
+                        {{!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel gravida arcu. Vestibulum
+                            feugiat, sapien ultrices fermentum congue, quam velit venenatis sem</p> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row courses_row">
+
+            <!-- Course -->
+            {{#each bestCourse}}
+            <div class="col-lg-4 course_col mb-3">
+                <div class="course">
+                    <div class="course_image"><img src={{this.HinhAnh}} alt=""></div>
+                    <div class="course_body">
+                        <h3 class="course_title"><a href="/course/{{this._id}}">{{this.TenKhoaHoc}}</a></h3>
+                        <div class="course_teacher">{{this.GiaoVien.TenGiaoVien}}</div>
+                        <div class="course_teacher">{{this.NgayDang}}</div>
+                        <div class="course_text">
+                            <p>{{this.MoTa}}</p>
+                        </div>
+                    </div>
+                    <div class="course_footer">
+                        <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
+                            <div class="course_info">
+                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                <span>{{this.totalStudent}} Student</span>
+                            </div>
+                            <div class="course_info">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <span>{{this.Rating}} Ratings</span>
+                            </div>
+                            <div class="course_price ml-auto">VNĐ {{this.Gia}}K</div>
+                            
+                        </div>
+                    </div>
+                    <div class="course_footer">
+                        <button type="button" onclick="addToCart('{{this._id}}')" class="btn btn-primary mb-3 "><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                    </div>
+                    
+                </div>
+            </div>
+            {{/each}}
+
+
+
+        </div>
+        {{!-- <div class="row">
+            <div class="col">
+                <div class="courses_button trans_200"><a href="#">view all courses</a></div>
+            </div>
+        </div> --}}
+    </div>
+</div>
+
+{{#if isAuthentication}}
+<div class="courses">
+    <div class="section_background parallax-window" data-parallax="scroll"
+        data-image-src="images/courses_background.jpg" data-speed="0.8"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title_container text-center">
+                    <h2 class="section_title">Courses Followed</h2>
+                    <div class="section_subtitle">
+                        {{!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel gravida arcu. Vestibulum
+                            feugiat, sapien ultrices fermentum congue, quam velit venenatis sem</p> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row courses_row">
+
+            <!-- Course -->
+            {{#each khoaHocLQ}}
+            <div class="col-lg-4 course_col mb-3">
+                <div class="course">
+                    <div class="course_image"><img src={{this.HinhAnh}} alt=""></div>
+                    <div class="course_body">
+                        <h3 class="course_title"><a href="/course/{{this._id}}">{{this.TenKhoaHoc}}</a></h3>
+                        <div class="course_teacher">{{this.GiaoVien.TenGiaoVien}}</div>
+                        <div class="course_teacher">{{this.NgayDang}}</div>
+                        <div class="course_text">
+                            <p>{{this.MoTa}}</p>
+                        </div>
+                    </div>
+                    <div class="course_footer">
+                        <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
+                            <div class="course_info">
+                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                <span>{{this.totalStudent}} Student</span>
+                            </div>
+                            <div class="course_info">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <span>{{this.Rating}} Ratings</span>
+                            </div>
+                            <div class="course_price ml-auto">VNĐ {{this.Gia}}K</div>
+                            
+                        </div>
+                    </div>
+                    <div class="course_footer">
+                        <button type="button" onclick="addToCart('{{this._id}}')" class="btn btn-primary mb-3 "><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                    </div>
+                    
+                </div>
+            </div>
+            {{/each}}
+
+
+
+        </div>
+        {{!-- <div class="row">
+            <div class="col">
+                <div class="courses_button trans_200"><a href="#">view all courses</a></div>
+            </div>
+        </div> --}}
+    </div>
+</div>
+{{/if}}
+
+
+{{>team}}
+
+{{>mailchimp}}
+<!-- Footer -->
+{{>footer}}

@@ -1,0 +1,7 @@
+{
+  "vnp_TmnCode":"8B21LA82",
+  "vnp_HashSecret":"BGXSAOLCXRMWMHGGWITOQIDHTLFFCZNT",
+  "vnp_Url":"http://sandbox.vnpayment.vn/paymentv2/vpcpay.html",
+  "vnp_ReturnUrl": "https://tmdt20a10.herokuapp.com/userprofile/order/vnpay_return"
+
+}

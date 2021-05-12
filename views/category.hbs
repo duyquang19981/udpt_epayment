@@ -1,0 +1,195 @@
+<link rel="stylesheet" type="text/css" href="_styles/simplePagination.css">
+<link rel="stylesheet" type="text/css" href="_styles/detail_style.css">
+<style>
+    
+    .sidebar_section{
+        width: 200px;
+    }
+    .sidebar_categories ul li{
+        margin: 5px 0;
+    }
+    .sidebar_categories ul li a{
+        color: black;
+    }
+    .sidebar_categories ul li a:hover{
+        color:coral;
+    }
+
+</style>
+{{#if isAuthentication}}
+<script>
+    window.onload = login_func;
+</script>
+{{/if}}
+ <div class="row">
+    <div class="col-2" style="margin-top: 120px;">
+		    <!-- Course -->
+        
+	<div class="courses">
+		<div class="container">
+			<div class="row">
+
+				<!-- Courses Sidebar -->
+				<div class="col-lg-11">
+					<div class="sidebar">
+
+						<!-- Categories -->
+						<div class="sidebar_section">
+							<div class="sidebar_section_title" style="font-size: 30px; font-weight: 700; font-family: 'Roboto Slab', serif; color: #384158", >Categories</div>
+							<div class="sidebar_categories mt-3 ml-4" style="font-size: 15px;">
+								<ul >
+									<li><a href="/category/webdev">Web Development</a></li>
+									<li><a href="/category/datascience">Data Science</a></li>
+									<li><a href="/category/mobileapp">Mobile Apps</a></li>
+									<li><a href="/category/gamedev">Game Development</a></li>
+									<li><a href="/category/database">Database</a></li>
+                                    <li><a href="/category/softwaretesting">Software Testing</a></li>
+                                    <li><a href="/category/sofwareengineering">Software Engineering</a></li>
+                                    <li><a href="/category/devtools">Development Tools</a></li>
+                                    <li><a href="/category/Ecommerce">E-Commerce</a></li>
+								</ul>
+							</div>
+						</div>						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    </div>
+    <div class="col-10">
+		{{!--<div class="row courses_row">
+		<!-- Course -->
+            {{#if bestCourse}}
+            {{#each bestCourse}}
+                <div class="col-lg-4 course_col mb-3">
+                    <div class="course">
+                        <div class="course_image"><img src={{this.HinhAnh}} alt=""></div>
+                        <div class="course_body">
+                            <h3 class="course_title"><a href="/course/{{this._id}}">{{this.TenKhoaHoc}}</a></h3>
+                            <div class="course_teacher">{{this.teacher}}</div>
+                            <div class="course_teacher">{{this.NgayDang}}</div>
+                            <div class="course_text">
+                                <p>{{this.MoTa}}</p>
+                            </div>
+                        </div>
+                        <div class="course_footer">
+                            <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
+                                <div class="course_info">
+                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    <span>{{this.totalStudent}} Student</span>
+                                </div>
+                                <div class="course_info">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <span>{{this.Rating}} Ratings</span>
+                                </div>
+                                <div class="course_price ml-auto">VNĐ {{this.Gia}}K</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+                <div class="row pagination-container w-100 d-flex justify-content-center"></div>
+            {{else}}
+                <img style="height: 300px;" src="https://www.capitalpowerbackup.com/resources/assets/imgs/no_result.gif" />
+            {{/if}}
+
+                    
+		</div>--}}
+        <link rel="stylesheet" type="text/css" href="_styles/simplePagination.css">
+        <link rel="stylesheet" type="text/css" href="_styles/detail_style.css">
+        <!-- Best Courses -->
+        <div class="courses" style="margin-top: 120px;">
+                <div class="section_background parallax-window" data-parallax="scroll"
+                    data-image-src="images/courses_background.jpg" data-speed="0.8"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="section_title_container text-center">
+                                <h2 class="section_title">Danh sách Khóa Học</h2>
+                                <div class="section_subtitle">
+                                    {{!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel gravida arcu. Vestibulum
+                                        feugiat, sapien ultrices fermentum congue, quam velit venenatis sem</p> --}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        {{#if sort}}
+                            <h2 class="text-uppercase" style="font-size: medium;">{{sort}}</h2>
+                        {{/if}}
+                    </div>
+                    <div class="row courses_row">
+                        
+                        <!-- Course -->
+                        {{#if bestCourse}}
+                        {{#each bestCourse}}
+                        <div class="col-lg-4 course_col mb-3">
+                            <div class="course">
+                                <div class="course_image"><img src={{this.HinhAnh}} alt=""></div>
+                                <div class="course_body">
+                                    <h3 class="course_title"><a href="/course/{{this._id}}">{{this.TenKhoaHoc}}</a></h3>
+                                    <div class="course_teacher">{{this.teacher}}</div>
+                                    <div class="course_teacher">{{this.NgayDang}}</div>
+                                    <div class="course_text">
+                                        <p>{{this.MoTa}}</p>
+                                    </div>
+                                </div>
+                                <div class="course_footer">
+                                    <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
+                                        <div class="course_info">
+                                            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                            <span>{{this.totalStudent}} Student</span>
+                                        </div>
+                                        <div class="course_info">
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <span>{{this.Rating}} Ratings</span>
+                                        </div>
+                                        <div class="course_price ml-auto">VNĐ {{this.Gia}}K</div>
+                                    </div>
+                                    <button type="button" onclick="addToCart('{{this._id}}')" class="btn btn-primary mb-3 "><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+                        <div class="row pagination-container w-100 d-flex justify-content-center"></div>
+                        {{else}}
+                        <img style="height: 300px;" src="https://www.capitalpowerbackup.com/resources/assets/imgs/no_result.gif" />
+                        {{/if}}
+                    </div>
+                    {{!-- <div class="row">
+                        <div class="col">
+                            <div class="courses_button trans_200"><a href="#">view all courses</a></div>
+                        </div>
+                    </div> --}}
+                </div>
+        </div>
+    </div>	
+  </div>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="scripts/jquery.simplePagination.js"></script>
+<script>
+    var items = $(".course_col");
+    var numItems = items.length;
+    var perPage = 9;
+
+    items.slice(perPage).hide();
+
+    $('.row.pagination-container').pagination({
+        items: numItems,
+        itemsOnPage: perPage,
+        prevText: "&laquo;",
+        nextText: "&raquo;",
+        onPageClick: function (pageNumber) {
+            var showFrom = perPage * (pageNumber - 1);
+            var showTo = showFrom + perPage;
+            items.hide().slice(showFrom, showTo).show();
+            $('html, body').animate({ scrollTop: 120 }, 'slow');
+        }
+    });
+</script>
+
+    
+
+<!-- Footer -->
+{{>footer}}

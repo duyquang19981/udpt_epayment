@@ -1,0 +1,103 @@
+{{#if isAuthentication}}
+<script>
+    window.onload = login_func;
+</script>
+{{/if}}
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" type="text/css" href="styles/courses.css">
+<link rel="stylesheet" type="text/css" href="styles/courses_responsive.css">
+
+
+
+<div class="main-content">
+    <div class="container " style="margin-top:110px;">
+        <div class="payment-info" style="margin: 60px 0px">
+            <div style="font-size:35px; color:black;">THÔNG TIN THANH TOÁN: </div>
+            <div class="payment-contnent">Nội dung: {{prodname}}</div>
+            <div class="payment-contnent">Số tiền: <span style="font-size: 30px; color:rgb(52, 180, 219)" >{{totalprice}}</span> VND</div>
+        </div>
+        
+        
+        <div style="font-size:35px; color:black;">CHỌN HÌNH THỨC THÀNH TOÁN: </div>
+            <div class="card-deck col-md-6">
+                <div class="card" style="width: 18rem; margin-top:45px">
+                    <img style="max-height:300px" class="card-img-top" src="https://yt3.ggpht.com/ytc/AAUvwnjBdYSYu3TEA-Jj0p-Ks1wvDaAG9z_kD6jZo2lhDQ=s900-c-k-c0x00ffffff-no-rj" alt="Card image cap">
+                    <div class="card-body">
+                        <h2 class="card-title">VNPAY</h2>
+                        <form method="POST" action="order/create_payment" id="payment-form">
+                            {{#if isCartCheckout}}
+                                <input type="hidden" name="type" id="" value="1">
+                            {{else}}
+                                <input type="hidden" name="type" id="" value="2">
+                            {{/if}}
+                            <input type="hidden" name="courseid" id="" value="{{courseid}}">
+                            <input type="hidden" name="prodname" id="" value="{{prodname}}">
+                            <input type="hidden" name="totalprice" id="" value="{{totalprice}}">
+                        </form>
+                        {{!-- <a href="order/create_payment_url" class="btn btn-danger">Thanh toán</a> --}}
+                        <button type="submit" form="payment-form" class= "btn btn-danger" style=" width: 100%;">Thanh Toán</button> 
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem; margin-top:45px">
+                    <img style="max-height:300px" class="card-img-top" src="https://lh3.googleusercontent.com/cX5GwTTl8VSye_oMU0a1hv62oITp7NLdkRt5rY6SlV5bVZWQxIoX_Po6SC98djKuL8oa" alt="Card image cap">
+                    <div class="card-body">
+                        <h2 class="card-title">MOMO</h2>
+                        {{#if isCartCheckout}}
+                            <a href="/payment/cart/{{totalprice}}" class="btn btn-danger"style=" width: 100%; ">Thanh toán</a>
+                        {{else}}
+                            <a href="/payment/{{courseid}}/{{totalprice}}" class="btn btn-danger"style=" width: 100%; ">Thanh toán</a>
+                        {{/if}}
+                    </div>
+                </div>
+            
+        </div>
+        
+
+    </div>
+</div>
+
+<script>
+    window.addEventListener('DOMcontentloaded', function(){
+
+    }, false);
+
+    function deleteCourseInCart(index, id){
+        //alert('hear');
+        // xoa div khoi trang web
+        var  course_div_id = 'course-' + index;
+        var course_block = document.getElementById(course_div_id);
+        course_block.classList.add('course-remove');
+        setTimeout(function(){
+            course_block.remove();
+        },
+        1000);
+        
+        var xhttp = new XMLHttpRequest();
+        xhttp.open('GET', 'delCourse?idcourse=' + id,'true');
+     // xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send();
+        xhttp.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                const res = JSON.parse(this.response);
+                console.log(res);
+                if(res.status == "Successed"){
+                    console.log('Xoa thanh cong');
+                    const prize_val = document.getElementById('prize-value');
+                    var prize = Number(prize_val.outerText);
+                    const new_total_prize = prize - res.subtractValue;
+                    prize_val.outerText = new_total_prize;
+                }
+                else{
+                    alert('Xoa khong thanh cong');
+                }
+           
+            
+           }
+
+        }
+    }
+     
+</script>
+

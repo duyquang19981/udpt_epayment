@@ -1,0 +1,98 @@
+{{#if isAuthentication}}
+<script>
+    window.onload = login_func;
+</script>
+{{/if}}
+<link rel="stylesheet" type="text/css" href="_styles/simplePagination.css">
+<link rel="stylesheet" type="text/css" href="_styles/detail_style.css">
+<!-- Best Courses -->
+<div class="courses" style="margin-top: 120px;">
+    <div class="section_background parallax-window" data-parallax="scroll"
+        data-image-src="images/courses_background.jpg" data-speed="0.8"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title_container text-center">
+                    <h2 class="section_title">Danh sách Khóa Học</h2>
+                    <div class="section_subtitle">
+                        {{!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel gravida arcu. Vestibulum
+                            feugiat, sapien ultrices fermentum congue, quam velit venenatis sem</p> --}}
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div>
+            {{#if sort}}
+                <h2 class="text-uppercase" style="font-size: medium;">{{sort}}</h2>
+            {{/if}}
+        </div>
+        <div class="row courses_row">
+            
+            <!-- Course -->
+            {{#if bestCourse}}
+            {{#each bestCourse}}
+            <div class="col-lg-4 course_col mb-3">
+                <div class="course">
+                    <div class="course_image"><img src={{this.HinhAnh}} alt=""></div>
+                    <div class="course_body">
+                        <h3 class="course_title"><a href="/course/{{this._id}}">{{this.TenKhoaHoc}}</a></h3>
+                        <div class="course_teacher">{{this.teacher}}</div>
+                        <div class="course_teacher">{{this.NgayDang}}</div>
+                        <div class="course_text">
+                            <p>{{this.MoTa}}</p>
+                        </div>
+                    </div>
+                    <div class="course_footer">
+                        <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
+                            <div class="course_info">
+                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                <span>{{this.totalStudent}} Student</span>
+                            </div>
+                            <div class="course_info">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <span>{{this.Rating}} Ratings</span>
+                            </div>
+                            <div class="course_price ml-auto">VNĐ {{this.Gia}}K</div>
+                        </div>
+                        <button type="button" onclick="addToCart('{{this._id}}')" class="btn btn-primary mb-3 "><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            <div class="row pagination-container w-100 d-flex justify-content-center"></div>
+            {{else}}
+            <img style="height: 300px;" src="https://www.capitalpowerbackup.com/resources/assets/imgs/no_result.gif" />
+            {{/if}}
+        </div>
+        {{!-- <div class="row">
+            <div class="col">
+                <div class="courses_button trans_200"><a href="#">view all courses</a></div>
+            </div>
+        </div> --}}
+    </div>
+</div>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="scripts/jquery.simplePagination.js"></script>
+<script>
+    var items = $(".course_col");
+    var numItems = items.length;
+    var perPage = 9;
+
+    items.slice(perPage).hide();
+
+    $('.row.pagination-container').pagination({
+        items: numItems,
+        itemsOnPage: perPage,
+        prevText: "&laquo;",
+        nextText: "&raquo;",
+        onPageClick: function (pageNumber) {
+            var showFrom = perPage * (pageNumber - 1);
+            var showTo = showFrom + perPage;
+            items.hide().slice(showFrom, showTo).show();
+            $('html, body').animate({ scrollTop: 120 }, 'slow');
+        }
+    });
+</script>
+<!-- Footer -->
+{{>footer}}

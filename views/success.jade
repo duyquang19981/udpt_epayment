@@ -1,0 +1,16 @@
+//
+   Created by vinhnt on 6/16/2017.
+
+extends layout
+
+block content
+    if code == "00"
+        h2(style="color:#38ad38 ;text-align: center")  Giao dịch thành công
+        p Số tiền: 
+        h3=amount 
+        p Nội dung: 
+        h3=orderInfo
+    else
+       h2(style="text-align: center; color: red") Giao dịch thất bại
+    p(style="text-align: center")
+        a.btn.btn-default(href='https://tmdt20a10.herokuapp.com/userprofile/') Về Profile

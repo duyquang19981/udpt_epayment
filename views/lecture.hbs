@@ -1,0 +1,86 @@
+
+{{!-- trang bài học --}}
+<script src="../scripts/custom.js"> </script>
+{{#if isAuthentication}}
+<script>
+    window.onload = login_func;
+</script>
+{{/if}}
+<div class="container-fluid lecture-wrap" style="margin-top: 160px;">
+    <div class="row">
+        
+        <div class="col-md-3 side-bar">
+            <div class="row lectureslist-sidebar">
+                <div style="font-size: 30px; color: rgb(104, 102, 102)">
+                    Course Content 
+                </div>
+            
+                <ul class="list-group leclist-sidebar">
+                    {{#each chapter}}
+                        <li class="list-group-item list-group-item-primary chapter-name-sidebar"><div class="chapter-index" style="display: inline-block;"></div>: {{TenChuong}}</li>     
+                        {{#each lessons}} 
+                            {{#if active}}
+                                <li class="list-group-item lecture-active" > <div style="display: inline-block;" class = "lesson-index">{{@index}}</div>: {{TenBaiHoc}}</li>        
+                            {{else}}    
+                                <li><a  href="../lecture/{{_id}}" class="list-group-item list-group-item-action " > <div style="display: inline-block;" class = "lesson-index">{{@index}}</div>: {{TenBaiHoc}}</a></li>   
+                            {{/if}}
+                        {{/each}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9 video-wrap"  >
+            <div class="course-name-vid">
+                
+            </div>
+            <div class = "video" style="margin-top: 20px;">
+                {{lecture.Url}}
+                {{!-- <iframe  width="100%" height="700px" src="https://www.youtube.com/embed/8mMADtcLHrc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
+
+            </div>
+        </div>
+
+    </div>
+   
+</div>
+
+<script>
+     function convert_youtube(input) {
+         var temp = input.split('&');
+        input = temp[0];
+        var pattern = /(?:http?s?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(\S+)/g;
+        if (pattern.test(input)) {
+            var replacement = '<iframe width="100%" height="680px" src="https://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe>';
+            var input = input.replace(pattern, replacement);
+            // For start time, turn get param & into ?
+            var input = input.replace('&amp;t=', '?t=');
+        }
+        return input;
+    }
+
+    document.addEventListener('DOMContentLoaded', function(){
+        // embed video
+        var chapterindex = document.getElementsByClassName('chapter-index');
+        for(i in chapterindex){
+            chapterindex[i].innerHTML = 'Chapter ' + (Number(i) + 1);
+        }
+        
+        var lessonindex = document.getElementsByClassName('lesson-index');
+        for (i in lessonindex){
+            lessonindex[i].innerHTML = 'Lesson ' + (Number(i) + 1);
+        }
+        //get active lesson name
+        var activelesson = document.getElementsByClassName('lecture-active');
+        var coursenamevid = document.getElementsByClassName('course-name-vid');
+        coursenamevid[0].innerHTML = activelesson[0].innerText;
+        // embed video
+        var video = document.getElementsByClassName('video');
+        console.log(video);
+        var video_embed = video[0].innerText;     
+        video[0].innerHTML =  convert_youtube(video_embed);
+
+        console.log('go');
+    });
+
+    
+</script>
