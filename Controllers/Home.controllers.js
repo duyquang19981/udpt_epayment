@@ -357,7 +357,7 @@ router.post('/createComment', async (req, res) => {
 
 router.post('/addtocart', async (req, res) => {
     if(!req.user){
-        return res.status(401).send({success: false, msg:"You must be login"});
+        return res.status(401).send({success: false, msg:"You must login to countinue"});
     }
     
     try {
@@ -370,26 +370,26 @@ router.post('/addtocart', async (req, res) => {
             const newChucNang = new ChucNang({_id: new mongoose.Types.ObjectId(), belongTo: user._id, GioHang: [courseId]});
             await newChucNang.save();
             db._disconnect();
-            return res.status(201).send({success: true, msg:"Add course is successfull", mount: 1});
+            return res.status(201).send({success: true, msg:"Added successfully", mount: 1});
         }
         const {GioHang, KhoaHocDaMua} = checkGioHang;
         if(KhoaHocDaMua.findIndex(course => course == courseId) != -1){
             db._disconnect();
-            return res.status(409).send({success: false, msg:"Course was bought"});
+            return res.status(409).send({success: false, msg:"You already bought this course"});
         }
         else if(GioHang.findIndex(course => course == courseId) != -1){
             db._disconnect();
-            return res.status(409).send({success: false, msg:"Course was exists"});
+            return res.status(409).send({success: false, msg:"This course already exists in cart"});
         }else if(GioHang){
             GioHang.push(courseId);
             const result = await ChucNang.findOneAndUpdate({_id: checkGioHang._id}, { $set: {GioHang: GioHang}});
             db._disconnect();
-            return res.status(200).send({success: true, msg:"Course was added", mount: GioHang.length});
+            return res.status(200).send({success: true, msg:"Added successfully", mount: GioHang.length});
         }
         
         db._disconnect();
     } catch (error) {
-        return res.status(404).send({success: false, msg:"Add course is failed"});
+        return res.status(404).send({success: false, msg:"Added unsuccessfully"});
     }
     
 })
